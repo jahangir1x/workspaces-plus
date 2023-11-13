@@ -66,8 +66,8 @@ table {
   font-size: 1.2em;
   padding: 15px 20px;
   color: white;
-  background-color: #8BC6EC;
-  background-image: linear-gradient(135deg, #9599E2 0%, #8BC6EC 100%);
+  background-color: #2e2e2e;
+  background-image: linear-gradient(135deg, #7072a8 0%, #5886a5 100%);
   font-weight: 500;
   letter-spacing: .5px;
   border-bottom: 1px solid rgba(255,255,255,.2);
@@ -76,58 +76,61 @@ table {
 ul{
   list-style: none;
   min-height: 250px;
-  background: #eaecf5;
+  background: #313131;
   overflow: hidden;
   padding: 0 0 15px;
 }
 
 li.workspace-list-entry {
-  background: white;
+  background: rgb(85, 85, 85);
   box-shadow: 0 5px 10px rgba(0,0,0,.1);
   margin: 15px 20px 0 10px;
   padding: 10px;
   width: calc(100% - 30px);
   cursor: pointer;
   border-radius: 4px;
-  transition: all .7s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+  transition: all 0.25s ease-in-out;
   font-size: .8em;
   position: relative;
   z-index: 1;
+  color: white;
 }
 
 li.workspace-list-entry.active::after {
   content: ' – active';
-  color: rgba(0,0,0,.25);
+  color: rgba(255, 255, 255, 0.63);
 }
 
 li.workspace-list-entry:hover {
-  transform: translate(10px,0);
+  transform: scale(1.05);
 }
 
 li.workspace-edit-entry {
-  background: white;
+  background: rgb(85, 85, 85);
   box-shadow: 0 5px 10px rgba(0,0,0,.1);
   margin: 15px 10px 0;
-  padding: 10px;
   width: calc(100% - 20px);
   cursor: pointer;
   border-radius: 4px;
-  transition: all .7s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+  transition: all 0.25s ease-in-out;
   font-size: .8em;
   position: relative;
   z-index: 1;
 }
 
 li.workspace-edit-entry input {
-  width: 100%;
+  background: rgb(204, 204, 204);
+  width: 75%;
+  padding: 10px;
   margin: 0;
   border: 0;
-  font-size: 1em;
+  font-size: 1.1em;
   font-family: inherit;
+  color: rgb(19, 19, 19);
 }
 
-li.workspace-edit-entry input:disabled{
-  color: #333;
+li.workspace-edit-entry input:disabled {
+  color: #ffffff;
   background: none;
 }
 
@@ -141,11 +144,21 @@ li.workspace-edit-entry a.edit-button {
 li.workspace-edit-entry a.edit-button-rename {
   right: 36px;
   background: url("../img/edit.svg");
+  transition: all 0.25s ease-in-out;
+}
+
+li.workspace-edit-entry a.edit-button-rename:hover {
+  transform: scale(1.2);
 }
 
 li.workspace-edit-entry a.edit-button-delete {
   right: 10px;
   background: url("../img/delete.svg");
+  transition: all 0.25s ease-in-out;
+}
+
+li.workspace-edit-entry a.edit-button-delete:hover {
+  transform: scale(1.2);
 }
 
 li:only-child.workspace-edit-entry a.edit-button-delete {
@@ -159,12 +172,12 @@ li.workspace-edit-entry .tabs-qty {
   text-align: center;
   top: 0;
   left: 0;
-  background-color: #FF9A8B;
-  background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 100%);    
+  background-color: #ff9a8b;
+  background-image: linear-gradient(90deg, #ff9a8b 0%, #ff6a88 100%);
   border-radius: 10px;
   color: white;
   font-weight: bold;
-  font-size: .875em;
+  font-size: 0.875em;
   min-width: 18px;
   padding: 3px 4px;
   top: -5px;
@@ -175,8 +188,8 @@ li.workspace-edit-entry .tabs-qty {
 }
 
 .footer-container {
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  background-color: #0093e9;
+  background-image: linear-gradient(135deg, #7072a8 0%, #5886a5 100%);
 }
 
 .footer {
@@ -186,15 +199,17 @@ li.workspace-edit-entry .tabs-qty {
   background: transparent;
   color: white;
   font-weight: 600;
-  font-size: .8em;
+  font-size: 0.8em;
   text-decoration: none;
   text-transform: uppercase;
   line-height: 30px;
   letter-spacing: 1px;
+  transition: all 0.25s ease-in-out;
 }
 
-.footer:hover{
-  background: rgba(0,0,0,.15);
+.footer:hover {
+  background: rgba(0, 0, 0, 0.15);
+  font-size: 0.9em;
 }
 
 .footer.full-width {
@@ -203,17 +218,20 @@ li.workspace-edit-entry .tabs-qty {
 
 .footer.split-large {
   width: 260px;
-  border-right: 1px solid rgba(255,255,255,.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .footer.split-small {
   width: 40px;
   height: 40px;
-  padding:0;
+  padding: 0;
   background-image: url("../img/create.svg");
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
+}
+.footer.split-small:hover {
+  background-size: 20px;
 }
 
 .almost-hide {
