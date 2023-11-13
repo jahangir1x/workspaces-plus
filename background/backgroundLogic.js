@@ -76,6 +76,14 @@ const BackgroundLogic = {
     await oldWorkspace.prepareToHide();
     await newWorkspace.show();
     await oldWorkspace.hide();
+    
+    // Set badge properties
+    browser.browserAction.setBadgeText(
+      { text: newWorkspace.name.toUpperCase().substring(0, 4) }
+    );
+    browser.browserAction.setBadgeBackgroundColor(
+      { color: "#121212" }
+    );
   },
 
   async renameWorkspace(workspaceId, workspaceName) {
