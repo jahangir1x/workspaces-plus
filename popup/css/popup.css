@@ -90,7 +90,7 @@ li.workspace-list-entry {
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.25s ease-in-out;
-  font-size: .8em;
+  font-size: .9em;
   position: relative;
   z-index: 1;
   color: white;
@@ -208,7 +208,6 @@ li.workspace-edit-entry .tabs-qty {
 }
 
 .footer:hover {
-  background: rgba(0, 0, 0, 0.15);
   font-size: 0.9em;
 }
 
@@ -217,19 +216,33 @@ li.workspace-edit-entry .tabs-qty {
 }
 
 .footer.split-large {
-  width: 260px;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  width: 220px;
 }
 
 .footer.split-small {
   width: 40px;
   height: 40px;
   padding: 0;
-  background-image: url("../img/create.svg");
-  background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
+  background-image: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.footer.split-small:hover {
+  background-size: 19px;
+}
+
+.footer.new-btn {
+  background-size: 16px;
+  background-image: url("../img/create.svg");
+}
+
+.footer.clone-btn {
+  background-size: 16px;
+  background-image: url("../img/copy.svg");
+}
+
 .footer.split-small:hover {
   background-size: 20px;
 }
