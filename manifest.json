@@ -1,15 +1,15 @@
 {
   "manifest_version": 2,
-  "name": "Tab Workspaces",
-  "version": "1.2.0",
+  "name": "Workspaces",
+  "version": "1.0.0",
 
-  "description": "Organize your tabs into workspaces. Switch between workspaces to change which tabs are displayed at the moment.",
+  "description": "Organize your tabs into workspaces. This extension is a fork of Tab Workspaces by Alejandro Alfonso (fonse).",
   "icons": {
     "48": "icons/container-site-d-48.png",
     "96": "icons/container-site-d-96.png"
   },
 
-  "homepage_url": "https://www.github.com/fonse/tab-workspaces",
+  "homepage_url": "https://www.github.com/jahangir1x/workspaces",
 
   "permissions": [
     "cookies",
