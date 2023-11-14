@@ -11,6 +11,7 @@ const BackgroundLogic = {
     browser.windows.onFocusChanged.addListener(windowId => {
       if (windowId != browser.windows.WINDOW_ID_NONE) {
         BackgroundLogic.updateContextMenu();
+        BackgroundLogic.updateBadgeText();
       }
     });
 
@@ -59,9 +60,10 @@ const BackgroundLogic = {
 
   async cloneWorkspace(active) {
     const windowId = await BackgroundLogic.getCurrentWindowId();
+    const currentWorkspace = await BackgroundLogic.getCurrentWorkspaceForWindow(windowId);
     const nextNumber = (await WorkspaceStorage.fetchWorkspacesCountForWindow(windowId)) + 1;
 
-    const workspace = await Workspace.create(windowId, `Workspace ${nextNumber}`, active || false);
+    const workspace = await Workspace.create(windowId, `Workspace ${nextNumber}`, active || false, await currentWorkspace.getTabs());
 
     // Re-render context menu
     BackgroundLogic.updateContextMenu();

@@ -10,11 +10,11 @@ class Workspace {
     }
   }
 
-  static async create(windowId, name, active) {
+  static async create(windowId, name, active, tabs = []) {
     const workspace = new Workspace(Util.generateUUID(), {
       name: name,
       active: active || false,
-      hiddenTabs: [],
+      hiddenTabs: tabs,
       windowId: windowId
     });
 
