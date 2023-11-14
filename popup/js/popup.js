@@ -2,10 +2,9 @@ const Logic = {
 
   workspaces: [],
 
-  async init(){
+  async init() {
     // We need the workspaces for rendering, so wait for this one
     await Logic.fetchWorkspaces();
-
     Logic.renderWorkspacesList();
     Logic.renderWorkspacesEdit();
     Logic.registerEventListeners();
@@ -26,6 +25,11 @@ const Logic = {
 
         window.close();
 
+      } else if (e.target.classList.contains("js-clone-workspace")) {
+        Logic.callBackground("cloneWorkspaceAndSwitch");
+
+        window.close();
+
       } else if (e.target.classList.contains("js-switch-panel")) {
         document.querySelectorAll(".container").forEach(el => el.classList.toggle("hide"));
 
@@ -37,7 +41,7 @@ const Logic = {
       } else if (e.target.classList.contains("js-delete-workspace")) {
         // Delete element
         const li = e.target.parentNode;
-        if (li.parentNode.childNodes.length == 1){
+        if (li.parentNode.childNodes.length == 1) {
           // Can't delete the last workspace
           return;
         }
@@ -81,13 +85,13 @@ const Logic = {
       const key = e.key;
       var index = parseInt(key);
 
-      if (key.length == 1 && !isNaN(index)){
-        if (index == 0){
+      if (key.length == 1 && !isNaN(index)) {
+        if (index == 0) {
           index = 10;
         }
 
         const el = document.querySelector(`#workspace-list li:nth-child(${index})`);
-        if (el){
+        if (el) {
           Logic.callBackground("switchToWorkspace", {
             workspaceId: el.dataset.workspaceId
           });
@@ -109,7 +113,7 @@ const Logic = {
     this.workspaces.forEach(workspace => {
       const li = document.createElement("li");
       li.classList.add("workspace-list-entry", "js-switch-workspace");
-      if (workspace.active){
+      if (workspace.active) {
         li.classList.add("active");
       }
       li.textContent = workspace.name;
@@ -162,9 +166,9 @@ const Logic = {
   },
 
   async callBackground(method, args) {
-    const message = Object.assign({}, {method}, args);
+    const message = Object.assign({}, { method }, args);
 
-    if (typeof browser != "undefined"){
+    if (typeof browser != "undefined") {
       return await browser.runtime.sendMessage(message);
     } else {
       return BackgroundMock.sendMessage(message);

@@ -15,6 +15,10 @@ browser.runtime.onMessage.addListener(async m => {
       await BackgroundLogic.createNewWorkspaceAndSwitch();
       break;
 
+    case "cloneWorkspaceAndSwitch":
+      await BackgroundLogic.cloneWorkspaceAndSwitch();
+      break;
+
     case "renameWorkspace":
       await BackgroundLogic.renameWorkspace(m.workspaceId, m.workspaceName);
       break;
