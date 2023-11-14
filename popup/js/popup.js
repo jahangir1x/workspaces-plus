@@ -33,10 +33,10 @@ const Logic = {
       } else if (e.target.classList.contains("js-switch-panel")) {
         document.querySelectorAll(".container").forEach(el => el.classList.toggle("hide"));
 
-      } else if (e.target.classList.contains("js-edit-workspace")) {
-        const input = e.target.parentNode.childNodes[0];
-        input.disabled = false;
-        input.focus();
+        // } else if (e.target.classList.contains("js-edit-workspace")) {
+        //   const input = e.target.parentNode.childNodes[0];
+        //   input.disabled = false;
+        //   input.focus();
 
       } else if (e.target.classList.contains("js-delete-workspace")) {
         // Delete element
@@ -76,6 +76,7 @@ const Logic = {
         // And re-render the list panel
         await Logic.fetchWorkspaces();
         Logic.renderWorkspacesList();
+        console.log("change in field");
       }
     });
 
@@ -144,13 +145,13 @@ const Logic = {
       input.classList.add("js-edit-workspace-input");
       input.type = "text";
       input.value = workspace.name;
-      input.disabled = true;
+      // input.disabled = true;
       li.appendChild(input);
 
-      const renameBtn = document.createElement("a");
-      renameBtn.classList.add("edit-button", "edit-button-rename", "js-edit-workspace");
-      renameBtn.href = "#";
-      li.appendChild(renameBtn);
+      // const renameBtn = document.createElement("a");
+      // renameBtn.classList.add("edit-button", "edit-button-rename", "js-edit-workspace");
+      // renameBtn.href = "#";
+      // li.appendChild(renameBtn);
 
       const deleteBtn = document.createElement("a");
       deleteBtn.classList.add("edit-button", "edit-button-delete", "js-delete-workspace");
