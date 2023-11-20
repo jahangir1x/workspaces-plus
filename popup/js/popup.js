@@ -18,25 +18,29 @@ const Logic = {
           workspaceId: workspaceId
         });
 
-        window.close();
-
       } else if (e.target.classList.contains("js-new-workspace")) {
-        Logic.callBackground("createNewWorkspaceAndSwitch");
+        await Logic.callBackground("createNewWorkspaceAndSwitch");
 
-        window.close();
+        // And re-render the list panel
+        await Logic.fetchWorkspaces();
+        await Logic.renderWorkspacesList();
 
       } else if (e.target.classList.contains("js-clone-workspace")) {
-        Logic.callBackground("cloneWorkspaceAndSwitch");
+        await Logic.callBackground("cloneWorkspaceAndSwitch");
 
-        window.close();
+        // And re-render the list panel
+        await Logic.fetchWorkspaces();
+        await Logic.renderWorkspacesList();
 
       } else if (e.target.classList.contains("js-switch-panel")) {
+        await Logic.renderWorkspacesEdit();
+        await Logic.fetchWorkspaces();
         document.querySelectorAll(".container").forEach(el => el.classList.toggle("hide"));
 
-        // } else if (e.target.classList.contains("js-edit-workspace")) {
-        //   const input = e.target.parentNode.childNodes[0];
-        //   input.disabled = false;
-        //   input.focus();
+        // And re-render the list panel
+        await Logic.renderWorkspacesEdit();
+        await Logic.fetchWorkspaces();
+        await Logic.renderWorkspacesList();
 
       } else if (e.target.classList.contains("js-delete-workspace")) {
         // Delete element
@@ -56,7 +60,7 @@ const Logic = {
 
         // And re-render the list panel
         await Logic.fetchWorkspaces();
-        Logic.renderWorkspacesList();
+        await Logic.renderWorkspacesList();
       }
     });
 
@@ -75,8 +79,7 @@ const Logic = {
 
         // And re-render the list panel
         await Logic.fetchWorkspaces();
-        Logic.renderWorkspacesList();
-        console.log("change in field");
+        await Logic.renderWorkspacesList();
       }
     });
 

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Workspaces",
-  "version": "1.0.0",
+  "name": "Workspaces+",
+  "version": "1.0.1",
 
   "description": "Organize your tabs into workspaces. This extension is a fork of Tab Workspaces by Alejandro Alfonso (fonse).",
   "icons": {

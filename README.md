@@ -1,4 +1,4 @@
-# Workspaces
+# Workspaces+
 
 Organize tabs into workspaces in Firefox.
 

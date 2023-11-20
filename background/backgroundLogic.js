@@ -99,7 +99,8 @@ const BackgroundLogic = {
     await newWorkspace.show();
     await oldWorkspace.hide();
 
-    BackgroundLogic.updateBadgeText();
+    BackgroundLogic.updateContextMenu();
+    await BackgroundLogic.updateBadgeText();
   },
 
   async renameWorkspace(workspaceId, workspaceName) {
