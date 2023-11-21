@@ -1,10 +1,16 @@
-# Workspaces+
+<p align="center">
+    <img width="128" src="https://raw.githubusercontent.com/jahangir1x/workspaces-plus/master/icons/container-site.svg" />
+</p>
 
-Organize tabs into workspaces in Firefox.
+<h1 align="center">Workspaces+</h1>
+<h3 align="center">Organize tabs into workspaces in Firefox.</h3>
 
-This extension is a fork of [Tab Workspaces](https://addons.mozilla.org/en-US/firefox/addon/tab-workspaces/) made by [@fonse](https://github.com/fonse) with extra features.
+<p align="center"><i>(This extension is a fork of <a href="https://addons.mozilla.org/en-US/firefox/addon/tab-workspaces/">Tab Workspaces</a> made by <a href="https://github.com/fonse">@fonse</a> with extra features.)</i></p>
 
-## Features (from Tab Workspaces)
+<a href="#Features"><h2>Installation 🔗</h2></a>
+<b><a href="https://addons.mozilla.org/en-US/firefox/addon/workspacesplus/">click here</a> to download and install Workspaces+.</b>
+
+<a href="#Features"><h2>Features (from Tab Workspaces) 🔗</h2></a>
  - Each tab belongs to a workspace. New tabs are automatically added to the current workspace.
  - Switch between workspaces from the toolbar icon to keep your tabs organized.
  - Tabs in other workspaces are safely hidden away.
@@ -14,10 +20,10 @@ This extension is a fork of [Tab Workspaces](https://addons.mozilla.org/en-US/fi
  - Press Ctrl+E to open the list of workspaces, then press 1-9 to switch between using keyboard shortcuts.
  - Search through your tabs in the address bar. Type "ws [text]" to begin searching. Choose a result to switch to that tab.
 
-## Extra Features
+<a href="#Features"><h2>Extra Features 🔗</h2></a>
  - Clone workspace.
  - Current workspace indicator.
  - Dark theme + UI improvements.
 
-## Acknowledgements
+<a href="#Features"><h2>Acknowledgements 🔗</h2></a>
 Special thanks to [@fonse](https://github.com/fonse) for his amazing extension!
