@@ -23,7 +23,16 @@
 <a href="#Features"><h2>Extra Features 🔗</h2></a>
  - Clone workspace.
  - Current workspace indicator.
- - Dark theme + UI improvements.
+ - Dark theme.
+ - Consistent and non-closing UI.
+
+<a href="#TODO"><h2>TODO 🔗</h2></a>
+- [x] Workspace indicator based on workspace name.
+- [x] Dark theme.
+- [x] Instant UI feedback.
+- [ ] Manage multiple windows with single workspace.
+- [ ] Remember all windows state. i.e, screen dimension.
+- [ ] Create option to save page state.
 
 <a href="#Features"><h2>Acknowledgements 🔗</h2></a>
 Special thanks to [@fonse](https://github.com/fonse) for his amazing extension!
