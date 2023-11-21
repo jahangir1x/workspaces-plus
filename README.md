@@ -32,6 +32,7 @@
 - [x] Instant UI feedback.
 - [ ] Manage multiple windows with single workspace.
 - [ ] Remember all windows state. i.e, screen dimension.
+- [ ] Migrate to indexedDB.
 - [ ] Create option to save page state.
 
 <a href="#Features"><h2>Acknowledgements 🔗</h2></a>
