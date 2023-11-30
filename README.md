@@ -30,8 +30,9 @@
 - [x] Workspace indicator based on workspace name.
 - [x] Dark theme.
 - [x] Instant UI feedback.
+- [x] Clone workspace feature.
 - [ ] Manage multiple windows with single workspace.
-- [ ] Remember all windows state. i.e, screen dimension.
+- [ ] Remember all windows state. i.e, screen dimension, tabs opened in each window.
 - [ ] Migrate to indexedDB.
 - [ ] Create option to save page state.
 
