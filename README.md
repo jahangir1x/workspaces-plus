@@ -31,6 +31,7 @@
 - [x] Dark theme.
 - [x] Instant UI feedback.
 - [x] Clone workspace feature.
+- [ ] workspace arrangement feature.
 - [ ] Manage multiple windows with single workspace.
 - [ ] Remember all windows state. i.e, screen dimension, tabs opened in each window.
 - [ ] Migrate to indexedDB.
