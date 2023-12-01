@@ -5,7 +5,7 @@
 <h1 align="center">Workspaces+</h1>
 <h3 align="center">Organize tabs into workspaces in Firefox.</h3>
 
-<p align="center"><i>(This extension is a fork of <a href="https://addons.mozilla.org/en-US/firefox/addon/tab-workspaces/">Tab Workspaces</a> made by <a href="https://github.com/fonse">@fonse</a> with extra features.)</i></p>
+<p align="center"><i>(This extension development was inspired by <a href="https://addons.mozilla.org/en-US/firefox/addon/tab-workspaces/">Tab Workspaces</a> made by <a href="https://github.com/fonse">@fonse</a> with extra features.)</i></p>
 
 <a href="#Features"><h2>Installation 🔗</h2></a>
 <b><a href="https://addons.mozilla.org/en-US/firefox/addon/workspacesplus/">click here</a> to download and install Workspaces+.</b>
@@ -38,4 +38,4 @@
 - [ ] Create option to save page state.
 
 <a href="#Features"><h2>Acknowledgements 🔗</h2></a>
-Special thanks to [@fonse](https://github.com/fonse) for his amazing extension!
+Special thanks to [@fonse](https://github.com/fonse) for the amazing extension!
