@@ -19,7 +19,7 @@ html {
 
 body {
   font-family: Roboto, Noto, "San Francisco", Ubuntu, "Segoe UI", "Fira Sans",
-    message-box, Arial, sans-serif;
+  message-box, Arial, sans-serif;
   inline-size: 300px;
   max-inline-size: 300px;
 }
@@ -251,4 +251,8 @@ li.workspace-edit-entry .tabs-qty {
   padding: 0;
   margin: 0;
   border: 0;
+}
+
+.workspace-list-entry.dragging {
+  opacity: 0;
 }

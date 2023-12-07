@@ -4,7 +4,7 @@ const WorkspaceStorage = {
     const key = `workspaces@${workspaceId}`;
     const results = await browser.storage.local.get(key);
 
-    if (results[key]){
+    if (results[key]) {
       return results[key];
     } else {
       throw `Workspace ${workspaceId} has no state.`;
@@ -30,6 +30,12 @@ const WorkspaceStorage = {
     const workspaceIds = results[key] || [];
 
     return workspaceIds.length;
+  },
+  async changeWorkspaceOrder(windowId, orderedWorkspaceIds) {
+    const key = `windows@${windowId}`;
+    await browser.storage.local.set({
+      [key]: orderedWorkspaceIds
+    });
   },
 
   async fetchWorkspacesForWindow(windowId) {
@@ -76,15 +82,15 @@ const WorkspaceStorage = {
     const workspaceIds = results[key] || [];
     const index = workspaceIds.findIndex(aWorkspaceId => aWorkspaceId == referenceWorkspaceId);
 
-    if (index == -1 || workspaceIds.length == 1){
+    if (index == -1 || workspaceIds.length == 1) {
       throw "There is no other workspace";
     }
 
-    const nextIndex = index < workspaceIds.length -1 ? index + 1 : index - 1;
+    const nextIndex = index < workspaceIds.length - 1 ? index + 1 : index - 1;
     return workspaceIds[nextIndex];
   },
 
-  async tearDownWindow(windowId){
+  async tearDownWindow(windowId) {
     // Fetch workspaces in closed window
     const key = `windows@${windowId}`;
     const results = await browser.storage.local.get(key);

@@ -26,6 +26,10 @@ browser.runtime.onMessage.addListener(async m => {
     case "deleteWorkspace":
       await BackgroundLogic.deleteWorkspace(m.workspaceId);
       break;
+
+    case "changeWorkspaceOrder":
+      await BackgroundLogic.changeWorkspaceOrder(m.orderedWorkspaceIds);
+      break;
   }
 
   return response;

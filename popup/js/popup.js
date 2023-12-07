@@ -1,16 +1,22 @@
 const Logic = {
 
   workspaces: [],
+  workspaceListElement: null,
+  workspaceItemsElement: null,
+  draggingItem: null,
+  nextSibling: null,
 
   async init() {
     // We need the workspaces for rendering, so wait for this one
     await Logic.fetchWorkspaces();
-    Logic.renderWorkspacesList();
-    Logic.renderWorkspacesEdit();
-    Logic.registerEventListeners();
+    await Logic.renderWorkspacesList();
+    await Logic.renderWorkspacesEdit();
+    await Logic.registerEventListeners();
+    await Logic.fetchWorkspaceElements();
+    await Logic.addDragListeners();
   },
 
-  registerEventListeners() {
+  async registerEventListeners() {
     document.addEventListener("click", async e => {
       if (e.target.classList.contains("js-switch-workspace")) {
         const workspaceId = e.target.dataset.workspaceId;
@@ -25,12 +31,18 @@ const Logic = {
         await Logic.fetchWorkspaces();
         await Logic.renderWorkspacesList();
 
+        await Logic.fetchWorkspaceElements();
+        await Logic.addDragListeners();
+
       } else if (e.target.classList.contains("js-clone-workspace")) {
         await Logic.callBackground("cloneWorkspaceAndSwitch");
 
         // And re-render the list panel
         await Logic.fetchWorkspaces();
         await Logic.renderWorkspacesList();
+
+        await Logic.fetchWorkspaceElements();
+        await Logic.addDragListeners();
 
       } else if (e.target.classList.contains("js-switch-panel")) {
         await Logic.renderWorkspacesEdit();
@@ -41,6 +53,9 @@ const Logic = {
         await Logic.renderWorkspacesEdit();
         await Logic.fetchWorkspaces();
         await Logic.renderWorkspacesList();
+
+        await Logic.fetchWorkspaceElements();
+        await Logic.addDragListeners();
 
       } else if (e.target.classList.contains("js-delete-workspace")) {
         // Delete element
@@ -61,6 +76,9 @@ const Logic = {
         // And re-render the list panel
         await Logic.fetchWorkspaces();
         await Logic.renderWorkspacesList();
+
+        await Logic.fetchWorkspaceElements();
+        await Logic.addDragListeners();
       }
     });
 
@@ -80,6 +98,9 @@ const Logic = {
         // And re-render the list panel
         await Logic.fetchWorkspaces();
         await Logic.renderWorkspacesList();
+
+        await Logic.fetchWorkspaceElements();
+        await Logic.addDragListeners();
       }
     });
 
@@ -122,6 +143,7 @@ const Logic = {
       }
       li.textContent = workspace.name;
       li.dataset.workspaceId = workspace.id;
+      li.draggable = true;
 
       const span = document.createElement("span");
       span.classList.add("tabs-qty");
@@ -170,15 +192,58 @@ const Logic = {
   },
 
   async callBackground(method, args) {
-    const message = Object.assign({}, { method }, args);
+    const message = Object.assign({}, {method}, args);
 
     if (typeof browser != "undefined") {
       return await browser.runtime.sendMessage(message);
     } else {
       return BackgroundMock.sendMessage(message);
     }
-  }
+  },
 
+  async fetchWorkspaceElements() {
+    Logic.workspaceListElement = document.querySelector("#workspace-list");
+    Logic.workspaceItemsElement = Logic.workspaceListElement.querySelectorAll(".workspace-list-entry");
+
+    // Add drag classes
+    Logic.workspaceItemsElement.forEach(item => {
+      item.addEventListener("dragstart", () => {
+        // Adding dragging class to item after a delay
+        setTimeout(() => item.classList.add("dragging"), 0);
+      });
+      item.addEventListener("dragend", async () => {
+        let workspaceIds = [];
+        Logic.workspaceListElement.querySelectorAll(".workspace-list-entry").forEach(item => workspaceIds.push(item.dataset.workspaceId));
+        await Logic.callBackground("changeWorkspaceOrder", {
+          orderedWorkspaceIds: workspaceIds
+        });
+        item.classList.remove("dragging");
+      });
+    });
+  },
+
+  initDragOverBehavior(e) {
+
+    e.preventDefault();
+    const draggingItem = document.querySelector(".dragging");
+
+    // Get all items except currently dragging item.
+    let siblings = [...Logic.workspaceListElement.querySelectorAll(".workspace-list-entry:not(.dragging)")];
+
+    // Find the sibling where the dragging item is being placed.
+    let nextSibling = siblings.find(sibling => {
+      return e.clientY <= sibling.offsetTop + sibling.offsetHeight;
+    });
+
+    // Insert the dragging item before the found sibling
+    Logic.workspaceListElement.insertBefore(draggingItem, nextSibling);
+    Logic.draggingItem = draggingItem;
+    Logic.nextSibling = nextSibling;
+  },
+  async addDragListeners() {
+    Logic.workspaceListElement.addEventListener("dragover", Logic.initDragOverBehavior);
+    Logic.workspaceListElement.addEventListener("dragenter", e => e.preventDefault());
+  }
 }
 
 Logic.init();

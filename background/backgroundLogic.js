@@ -39,6 +39,11 @@ const BackgroundLogic = {
 
   },
 
+  async changeWorkspaceOrder(orderedWorkspaceIds) {
+    const windowId = await BackgroundLogic.getCurrentWindowId();
+    await WorkspaceStorage.changeWorkspaceOrder(windowId, orderedWorkspaceIds);
+  },
+
   async getCurrentWorkspaceForWindow(windowId) {
     const workspaces = await BackgroundLogic.getWorkspacesForWindow(windowId);
 
@@ -223,7 +228,7 @@ const BackgroundLogic = {
     let windowId, workspaceId, tabIndex;
     [windowId, workspaceId, tabIndex] = content.split(':');
 
-    await browser.windows.update(parseInt(windowId), { focused: true });
+    await browser.windows.update(parseInt(windowId), {focused: true});
 
     const workspace = await Workspace.find(workspaceId);
     await BackgroundLogic.switchToWorkspace(workspace.id);
@@ -234,7 +239,7 @@ const BackgroundLogic = {
     });
 
     if (matchedTabs.length > 0) {
-      await browser.tabs.update(matchedTabs[0].id, { active: true });
+      await browser.tabs.update(matchedTabs[0].id, {active: true});
     }
   },
 
@@ -243,7 +248,7 @@ const BackgroundLogic = {
       return [];
     }
 
-    const windows = await browser.windows.getAll({ windowTypes: ['normal'] })
+    const windows = await browser.windows.getAll({windowTypes: ['normal']})
     const promises = windows.map(windowInfo => BackgroundLogic.searchTabsInWindow(text, windowInfo.id));
 
     return Util.flattenArray(await Promise.all(promises));
@@ -273,10 +278,10 @@ const BackgroundLogic = {
     const windowId = await BackgroundLogic.getCurrentWindowId();
     const currentWorkspace = await BackgroundLogic.getCurrentWorkspaceForWindow(windowId);
     browser.browserAction.setBadgeText(
-      { text: currentWorkspace.name.toUpperCase().substring(0, 4) }
+      {text: currentWorkspace.name.toUpperCase().substring(0, 4)}
     );
     browser.browserAction.setBadgeBackgroundColor(
-      { color: "#121212" }
+      {color: "#121212"}
     );
   },
 };
