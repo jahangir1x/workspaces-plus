@@ -1,30 +1,25 @@
 {
   "manifest_version": 2,
   "name": "Workspaces+",
-  "version": "1.1.0",
-
+  "version": "1.2.0",
   "description": "Organize your tabs into workspaces. This extension is a fork of Tab Workspaces by Alejandro Alfonso (fonse).",
   "icons": {
     "48": "icons/container-site-d-48.png",
     "96": "icons/container-site-d-96.png"
   },
-
   "homepage_url": "https://www.github.com/jahangir1x/workspaces",
-
   "permissions": [
     "cookies",
     "menus",
     "storage",
     "tabs"
   ],
-
   "browser_action": {
     "browser_style": true,
     "default_icon": "icons/container-site.svg",
     "default_title": "Workspaces",
     "default_popup": "popup/popup.html"
   },
-
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
@@ -33,7 +28,6 @@
       "description": "Open workspace list"
     }
   },
-
   "background": {
     "scripts": [
       "background/util.js",
@@ -43,7 +37,6 @@
       "background/messageHandler.js"
     ]
   },
-
   "omnibox": {
     "keyword": "ws"
   }
