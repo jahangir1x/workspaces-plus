@@ -6,7 +6,7 @@ class Workspace {
       this.name = state.name;
       this.active = state.active;
       this.hiddenTabs = state.hiddenTabs;
-      this.windowId = state.windowId;
+      this.windowId = 'all';
     }
   }
 
@@ -15,7 +15,7 @@ class Workspace {
       name: name,
       active: active || false,
       hiddenTabs: tabs,
-      windowId: windowId
+      windowId: 'all',
     });
 
     await workspace.storeState();
@@ -41,7 +41,6 @@ class Workspace {
       // Not counting pinned tabs. Should we?
       const tabs = await browser.tabs.query({
         pinned: false,
-        windowId: this.windowId
       });
 
       return tabs;
@@ -60,7 +59,6 @@ class Workspace {
   // Store hidden tabs in storage
   async prepareToHide() {
     const tabs = await browser.tabs.query({
-      windowId: this.windowId,
       pinned: false
     });
 
@@ -93,7 +91,6 @@ class Workspace {
         url: tab.url,
         active: tab.active,
         cookieStoreId: tab.cookieStoreId,
-        windowId: this.windowId
       });
     });
 

@@ -24,7 +24,7 @@ const WorkspaceStorage = {
   },
 
   async fetchWorkspacesCountForWindow(windowId) {
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     const results = await browser.storage.local.get(key);
 
     const workspaceIds = results[key] || [];
@@ -32,14 +32,14 @@ const WorkspaceStorage = {
     return workspaceIds.length;
   },
   async changeWorkspaceOrder(windowId, orderedWorkspaceIds) {
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     await browser.storage.local.set({
       [key]: orderedWorkspaceIds
     });
   },
 
   async fetchWorkspacesForWindow(windowId) {
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     const results = await browser.storage.local.get(key);
 
     const workspaceIds = results[key] || [];
@@ -52,7 +52,7 @@ const WorkspaceStorage = {
   },
 
   async registerWorkspaceToWindow(windowId, workspaceId) {
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     const results = await browser.storage.local.get(key);
     const workspacesForWindow = results[key] || [];
 
@@ -63,7 +63,7 @@ const WorkspaceStorage = {
   },
 
   async unregisterWorkspaceToWindow(windowId, workspaceId) {
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     const results = await browser.storage.local.get(key);
     const workspacesForWindow = results[key] || [];
 
@@ -76,7 +76,7 @@ const WorkspaceStorage = {
   },
 
   async fetchNextWorkspaceId(windowId, referenceWorkspaceId) {
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     const results = await browser.storage.local.get(key);
 
     const workspaceIds = results[key] || [];
@@ -92,7 +92,7 @@ const WorkspaceStorage = {
 
   async tearDownWindow(windowId) {
     // Fetch workspaces in closed window
-    const key = `windows@${windowId}`;
+    const key = `windows@all`;
     const results = await browser.storage.local.get(key);
     const workspaceIds = results[key] || [];
 
