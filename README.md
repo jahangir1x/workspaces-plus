@@ -7,6 +7,10 @@
 
 <p align="center"><i>(This extension development was inspired by <a href="https://addons.mozilla.org/en-US/firefox/addon/tab-workspaces/">Tab Workspaces</a> made by <a href="https://github.com/fonse">@fonse</a>.)</i></p>
 
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/cc8c078c-6d2a-4087-862e-f76e06871a09" />
+</div>
+
 <a href="#Features"><h2>Installation 🔗</h2></a>
 <b><a href="https://addons.mozilla.org/en-US/firefox/addon/workspacesplus/">click here</a> to download and install Workspaces+.</b>
 
